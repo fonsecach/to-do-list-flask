@@ -1,7 +1,16 @@
-from flask import Flask
+from flask import Flask, request
+from models.task import Task
 
 app = Flask(__name__)
 
+tasks = []
+
+@app.route('/tasks', methods=['POST'])
+def create_task():
+    data = request.get_json()
+    print(data)
+    return "Criado com sucesso", 200
+    
 
 @app.route('/')
 def root():
